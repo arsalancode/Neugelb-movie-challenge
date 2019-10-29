@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileSdk
+    defaultConfig {
+        applicationId "com.neugelb.challenge"
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner testing.junitRunner
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "API_KEY", '"38e71a20d18f7466383ea31ae430a694"'
+            buildConfigField "String", "API_BASE", '"https://api.themoviedb.org/3/"'
+            buildConfigField "String", "IMAGE_BASE_URL", '"https://image.tmdb.org/t/p/w300/"'
+            buildConfigField "String", "BACKDROP_BASE_URL", '"https://image.tmdb.org/t/p/w780/"'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "API_KEY", '"38e71a20d18f7466383ea31ae430a694"'
+            buildConfigField "String", "API_BASE", '"https://api.themoviedb.org/3/"'
+            buildConfigField "String", "IMAGE_BASE_URL", '"https://image.tmdb.org/t/p/w300/"'
+            buildConfigField "String", "BACKDROP_BASE_URL", '"https://image.tmdb.org/t/p/w780/"'
+        }
+    }
+
+    dynamicFeatures = [":movies"]
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Kotlin
+    api kotlinDep.stdlib
+
+    //Android
+    api androidDependencies.appCompat
+
+    //DI
+    api koinDep.core
+    api koinDep.android
+    api koinDep.viewmodel
+
+    //Arch components
+    api archComponents.components
+    kapt archComponents.componentsCompiler
+
+    //Networking
+    api networking.okhttp
+    api networking.okhttpLog
+    api networking.gson
+    api networking.retrofit
+    api networking.retrofitRx
+    api networking.retrofitGson
+    api networking.jodaTime
+
+    //UI
+    api ui.constraintLayout
+    api ui.recyclerview
+    api ui.material
+
+    api ui.picasso
+
+    //rx
+    api rx.java
+    api rx.android
+    api rx.kotlin
+
+}
