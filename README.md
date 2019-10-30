@@ -8,7 +8,7 @@ This sample app has been developed with Kotlin following an MVVM architecture pa
 * Details screen: List down movie details by fetching from [themoviedb](https://developers.themoviedb.org/3/).
 
 <p align="center">
-  <img src="screenshots/app_flow.gif" width="200" >
+  <img src="screenshots/appflow.gif" width="200" >
   <img src="screenshots/s1_homescreen.png" width="200">
   <img src="screenshots/s2_searchscreen.png" width="200">
   <img src="screenshots/s3_details.png" width="200">
